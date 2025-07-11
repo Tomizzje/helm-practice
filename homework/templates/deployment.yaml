@@ -49,7 +49,7 @@ spec:
             - name: APP_DEFAULT_MESSAGE
               value: "frontapp"
             - name: JAVA_OPTS
-              value: ""
+              value: {{ .Values.frontAppJavaOpts | quote }}
             - name: BACK_URL
               value: "http://backapp-deployment:8080"
           ports:
@@ -133,7 +133,7 @@ spec:
             - name: APP_DEFAULT_MESSAGE
               value: "backapp"
             - name: JAVA_OPTS
-              value: "-Dspring.main.banner-mode=off"     
+              value: {{ .Values.backAppJavaOpts | quote }}    
           resources:
             {{- toYaml . | nindent 12 }}
           {{- with .Values.volumeMounts }}

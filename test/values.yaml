@@ -1,7 +1,7 @@
 ingress:
-  enabled: false
+  enabled: true
   hosts:
-    - host: localhost
+    - host: other.cubix.localhost
       paths:
         - path: /
           pathType: Prefix

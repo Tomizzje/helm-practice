@@ -1,0 +1,19 @@
+$ kubectl create namespace hw5-test
+$ kubectl create namespace hw5-dev
+$ kubectl create namespace hw5-prod
+
+$ helm install  homework5 homework -f test/values.yaml -n hw5-test
+$ helm install  homework5 homework -f dev/values.yaml -n hw5-dev
+$ helm install  homework5 homework -f prod/values.yaml -n hw5-prod
+
+$ kubectl get pods -n hw5-dev
+$ kubectl get pods -n hw5-test
+$ kubectl get pods -n hw5-prod
+
+$ helm template homework5 homework -n hw5-dev
+$ helm template homework5 homework -n hw5-test
+$ helm template homework5 homework -n hw5-prod
+
+$ helm uninstall  homework5 homework -n hw5-test
+$ helm uninstall  homework5 homework -n hw5-dev
+$ helm uninstall  homework5 homework -n hw5-prod

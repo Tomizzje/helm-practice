@@ -24,6 +24,9 @@ fullnameOverride: ""
 frontappName: frontapp-deployment
 backappName: backapp-deployment
 
+frontAppJavaOpts: ""
+backAppJavaOpts: "-Dspring.main.banner-mode=off"
+
 globalLabels:
   training: block5
 frontappLabels:

@@ -1,0 +1,10 @@
+ingress:
+  enabled: true
+  hosts:
+    - host: application.cubix.localhost
+      paths:
+        - path: /
+          pathType: Prefix
+
+replicaCount: 2
+backendReplicaCount: 2         
