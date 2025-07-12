@@ -36,7 +36,7 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: {{ .Values.backappPort }}
+      targetPort: {{ .Values.backappPort }}
   selector:
     {{- toYaml .Values.backappLabels | nindent 4 }}

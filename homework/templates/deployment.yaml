@@ -46,12 +46,13 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: APP_DEFAULT_MESSAGE
-              value: "frontapp"
-            - name: JAVA_OPTS
-              value: {{ .Values.frontAppJavaOpts | quote }}
-            - name: BACK_URL
-              value: "http://backapp-deployment:8080"
+            {{- with .Values.env.frontapp }}
+            {{- toYaml . | nindent 10 }}
+            {{- end }}
+          - name: JAVA_OPTS
+            value: {{ .Values.frontAppJavaOpts | quote }}
+          - name: BACK_URL
+            value: "http://{{ .Values.backappName }}:{{ .Values.backappPort }}"
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -130,10 +131,11 @@ spec:
           image: "{{ .Values.image.backendRepository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
-            - name: APP_DEFAULT_MESSAGE
-              value: "backapp"
-            - name: JAVA_OPTS
-              value: {{ .Values.backAppJavaOpts | quote }}    
+            {{- with .Values.env.backapp }}
+            {{- toYaml . | nindent 10 }}
+            {{- end }}
+          - name: JAVA_OPTS
+            value: {{ .Values.backAppJavaOpts | quote }}
           resources:
             {{- toYaml . | nindent 12 }}
           {{- with .Values.volumeMounts }}

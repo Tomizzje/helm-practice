@@ -23,6 +23,15 @@ fullnameOverride: ""
 
 frontappName: frontapp-deployment
 backappName: backapp-deployment
+backappPort: 8080
+
+env:
+  frontapp:
+    - name: APP_DEFAULT_MESSAGE
+      value: "frontapp"
+  backapp:
+    - name: APP_DEFAULT_MESSAGE
+      value: "backapp"
 
 frontAppJavaOpts: ""
 backAppJavaOpts: "-Dspring.main.banner-mode=off"
