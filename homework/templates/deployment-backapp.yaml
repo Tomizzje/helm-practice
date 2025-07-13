@@ -52,7 +52,7 @@ spec:
           - name: JAVA_OPTS
             value: {{ .Values.backAppJavaOpts | quote }}
           resources:
-            {{- toYaml . | nindent 12 }}
+            {{- toYaml .Values.resources | nindent 12 }}
           {{- with .Values.volumeMounts }}
           volumeMounts:
             {{- toYaml . | nindent 12 }}
